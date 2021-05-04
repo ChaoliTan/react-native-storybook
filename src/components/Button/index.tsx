@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { StyleSheet, Text, Pressable } from 'react-native';
-import { ThemeContext, ThemeProvider, ThemeConsumer } from '../../providers/themes';
+import { ThemeContext, useTheme } from '../../providers/themes';
+
+export interface Button {}
 
 const ThemedButton = (props) => {
-    const themes = useContext(ThemeContext);
+    const themeWithProps = useTheme(props);
 
     return (
-        <Pressable {...props} style={{ color: themes.brand_primary, backgroundColor: themes.brand_important }}>
+        <Pressable style={{ color: themeWithProps.brand_primary, backgroundColor: themeWithProps.brand_important }}>
             <Text>Button</Text>
         </Pressable>
     );
