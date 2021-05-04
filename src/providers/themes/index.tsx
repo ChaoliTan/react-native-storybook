@@ -1,13 +1,9 @@
 import React, { useContext } from 'react';
 import defaultTheme from './default';
-import $Themes from './theme';
-import $Colors from './variable';
-import $Layout from './layout';
 
 export const ThemeContext = React.createContext(defaultTheme);
 export type Theme = typeof defaultTheme & { [key: string]: any };
 export type PartialTheme = Partial<Theme>;
-
 export interface ThemeProviderProps {
     value?: PartialTheme;
     children?: React.ReactNode;
@@ -18,7 +14,6 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
 };
 
 export const ThemeConsumer = ThemeContext.Consumer;
-
 export interface UseThemeContextProps {
     theme?: PartialTheme;
 }
@@ -26,5 +21,3 @@ export const useTheme = (props: UseThemeContextProps = {}) => {
     const theme = useContext(ThemeContext);
     return { ...theme, ...props.theme };
 };
-
-export { $Themes, $Colors, $Layout };
