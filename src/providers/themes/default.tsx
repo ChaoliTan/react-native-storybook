@@ -108,6 +108,8 @@ export default {
 
     button_height_sm: 23,
     button_font_size_sm: 12,
+    button_line_height_sm: 12,
+    button_width_sm: 52,
 
     button_height_nm: 33,
     button_font_size_nm: 15,
@@ -183,6 +185,13 @@ export default {
     popup_zindex: 999,
     modal_zindex: 999,
 
+    // borderRadius
+    border_radius: 17.5,
+    border_top_left_radius: 17.5,
+    border_top_right_radius: 17.5,
+    border_bottom_Left_radius: 17.5,
+    border_bottom_right_radius: 17.5,
+
     // colors (origin from variable.ts)
     transparent: 'transparent',
     bg: '#ffffff',
@@ -216,4 +225,14 @@ export default {
     grayX: '#F7F7F7',
     black: '#000000',
     white: '#ffffff',
+
+    // flex layout
+    flex: 'flex',
+    // flexDirection
+    row: 'row',
+    row_reverse: 'row_reverse',
+    column: 'column',
+    column_reverse: 'column_reverse',
+    //
+    center: 'center',
 };

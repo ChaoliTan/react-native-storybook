@@ -19,5 +19,5 @@ export interface UseThemeContextProps {
 }
 export const useTheme = (props: UseThemeContextProps = {}) => {
     const theme = useContext(ThemeContext);
-    return { ...theme, ...props.theme };
+    return { ...theme, ...props.theme, ...props };
 };

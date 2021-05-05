@@ -23,7 +23,7 @@
             "searchDir": [
                 "./src/components"
             ],
-            "pattern": "**/*.stories.js",
+            "pattern": "**/*.stories.{js,jsx,ts,tsx}",
             "outputFile": "./storybook/storyLoader.js"
         }
     },
