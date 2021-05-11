@@ -10,15 +10,15 @@ export type CustomeButtonProps = {
 
 const defaultTitle = '抢购';
 
-const DefaultButton: React.FC<CustomeButtonProps> = ({ title = defaultTitle }) => {
+const DefaultButton: React.FC<CustomeButtonProps> = (props) => {
     return (
         <View style={styles.centerContainer}>
-            <ThemedButton title={title} />
+            <ThemedButton {...props} />
         </View>
     );
 };
 
-const PrimaryButton: React.FC<CustomeButtonProps> = ({ title = '立即使用' }) => {
+const PrimaryButton: React.FC<CustomeButtonProps> = ({ title = '立即使用', theme }) => {
     const themes = useTheme();
     return (
         <View style={styles.centerContainer}>
@@ -32,11 +32,12 @@ const PrimaryButton: React.FC<CustomeButtonProps> = ({ title = '立即使用' })
                     },
                     width: 112,
                     height: 50,
-                    backgroundColor: themes.brand_success,
+                    backgroundColor: themes.brand_primary,
                     borderTopLeftRadius: 0,
                     borderBottomLeftRadius: 0,
                     borderTopRightRadius: 25,
                     borderBottomRightRadius: 25,
+                    ...theme,
                 }}
             />
         </View>
@@ -45,6 +46,7 @@ const PrimaryButton: React.FC<CustomeButtonProps> = ({ title = '立即使用' })
 
 export { DefaultButton, PrimaryButton };
 
+// 使用Button居中展示
 const styles = StyleSheet.create({
     centerContainer: {
         display: 'flex',

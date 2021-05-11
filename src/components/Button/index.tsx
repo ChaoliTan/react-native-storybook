@@ -11,7 +11,7 @@ export interface ButtonStyle {
     style?: React.CSSProperties;
 }
 
-export const defaultPressValue = {
+export const defaultPressableStyle = {
     backgroundColor: defaultTheme.brand_primary,
     width: defaultTheme.button_width_sm,
     height: defaultTheme.button_height_sm,
@@ -26,31 +26,32 @@ export const defaultPressValue = {
     borderBottomRightRadius: defaultTheme.border_bottom_right_radius,
 };
 
-export const defaultTextValue = {
+export const defaultTextStyle = {
     fontSize: defaultTheme.font_size_caption_sm,
     lineHeight: defaultTheme.button_line_height_sm,
     color: defaultTheme.color_text_base_inverse,
 };
 
 const ThemedButton = (props) => {
-    const themeWithProps = useTheme(props);
-    const { title, theme } = themeWithProps;
+    const getThemeFromProps = useTheme(props);
+    const { title, ...theme } = getThemeFromProps;
+    // console.log(theme, 'props', props);
 
     return (
         <Pressable
             style={{
-                ...defaultPressValue,
+                ...defaultPressableStyle,
                 ...theme,
             }}
         >
             <View>
                 <Text
                     style={{
-                        ...defaultTextValue,
-                        ...theme?.text,
+                        ...defaultTextStyle,
+                        ...theme,
                     }}
                 >
-                    {themeWithProps?.title}
+                    {getThemeFromProps?.title}
                 </Text>
             </View>
         </Pressable>
@@ -59,6 +60,4 @@ const ThemedButton = (props) => {
 
 export default ThemedButton;
 
-const styles = StyleSheet.create({
-    color: {},
-});
+const styles = StyleSheet.create({});

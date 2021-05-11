@@ -43,11 +43,13 @@
         "@babel/runtime": "^7.8.4",
         "@react-native-community/eslint-config": "^2.0.0",
         "@storybook/addon-actions": "^5.3.19",
+        "@storybook/addon-knobs": "^6.2.9",
         "@storybook/addon-links": "^5.3.19",
         "@storybook/addons": "^5.3.19",
         "@storybook/react": "^5.3.19",
         "@storybook/react-native": "^5.3.19",
         "@storybook/react-native-server": "^5.3.19",
+        "@types/react-native": "^0.63.25",
         "babel-eslint": "^10.1.0",
         "babel-jest": "^25.1.0",
         "babel-loader": "^8.1.0",
@@ -66,8 +68,7 @@
         "react-test-renderer": "16.13.1",
         "webpack": "^4.43.0",
         "webpack-cli": "^3.3.12",
-        "webpack-dev-server": "^3.11.0",
-        "@types/react-native": "^0.63.25"
+        "webpack-dev-server": "^3.11.0"
     },
     "jest": {
         "preset": "react-native"
