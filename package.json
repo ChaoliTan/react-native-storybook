@@ -49,9 +49,11 @@
         "@storybook/react": "^5.3.19",
         "@storybook/react-native": "^5.3.19",
         "@storybook/react-native-server": "^5.3.19",
+        "@testing-library/jest-native": "^4.0.1",
+        "@testing-library/react-native": "^7.2.0",
         "@types/react-native": "^0.63.25",
         "babel-eslint": "^10.1.0",
-        "babel-jest": "^25.1.0",
+        "babel-jest": "^26.6.3",
         "babel-loader": "^8.1.0",
         "eslint": "^7.5.0",
         "eslint-plugin-import": "^2.22.0",
@@ -61,17 +63,32 @@
         "eslint-plugin-react-native": "^3.8.1",
         "html-webpack-plugin": "^4.3.0",
         "jest": "^25.1.0",
+        "jest-react-native": "^18.0.0",
         "metro-react-native-babel-preset": "^0.59.0",
         "prettier": "^2.0.5",
         "react-dom": "^16.13.1",
         "react-native-storybook-loader": "^2.0.2",
-        "react-test-renderer": "16.13.1",
+        "react-test-renderer": "^17.0.2",
         "webpack": "^4.43.0",
         "webpack-cli": "^3.3.12",
         "webpack-dev-server": "^3.11.0"
     },
     "jest": {
-        "preset": "react-native"
+        "verbose": true,
+        "preset": "react-native",
+        "setupFilesAfterEnv": [
+            "./jest.setup.js",
+            "@testing-library/jest-native/extend-expect"
+        ],
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json",
+            "node"
+        ],
+        "testURL": "https://fantuan.ca/"
     },
     "storybook-deployer": {
         "gitUsername": "ChaoliTan",
