@@ -3,7 +3,7 @@ const brandPrimaryTap = '#FF5C3B';
 
 export default {
     // 默认主题
-    // https://github.com/ant-design/ant-design-mobile/wiki/设计变量表及命名规范
+    // https://github.com/FantuanFE/ft-design/blob/master/wiki/设计变量表及命名规范.md
 
     // 色彩, NOTE: must use `#000000` instead of `#000`
     // https://facebook.github.io/react-native/docs/colors.html

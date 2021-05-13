@@ -6,7 +6,7 @@ module.exports = {
         jest: true,
     },
     parser: 'babel-eslint',
-    extends: ['@react-native-community', 'eslint:recommended', 'plugin:react/recommended'],
+    extends: ['@react-native-community', 'eslint:recommended', 'plugin:react/recommended', '@typescript-eslint/parser'],
     plugins: ['react', 'react-native', 'react-hooks'],
     rules: { semi: [2, 'always'] },
 };
