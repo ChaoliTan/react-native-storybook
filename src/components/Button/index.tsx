@@ -15,7 +15,6 @@ type ButtonProps = {
 
 const ThemedButton: React.FC<ButtonProps> = (props) => {
     const { children, size = 'normal', type = 'default', style, loading, disabled, onPress, ...restProps } = props;
-    const [isPressIn, setIsPresseIn] = React.useState(false);
     const _styles = useTheme<ButtonStyles>({ themeStyle: buttonStyle, style });
 
     const wrapperStyle = React.useMemo(
@@ -35,12 +34,10 @@ const ThemedButton: React.FC<ButtonProps> = (props) => {
 
     return (
         <TouchableOpacity
-            activeOpacity={0.85}
+            activeOpacity={0.8}
             style={wrapperStyle}
             disabled={disabled}
-            onPressIn={() => setIsPresseIn(true)}
-            onPress={(e) => onPress?.(e)}
-            onPressOut={() => setIsPresseIn(false)}
+            onPress={(e) => !disabled && onPress && onPress(e)}
             {...restProps}
         >
             <View style={_styles.container}>

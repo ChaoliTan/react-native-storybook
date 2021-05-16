@@ -3,8 +3,15 @@ import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import Button from '.';
 
-storiesOf('Button', module).add('Default Button', () => (
-    <View style={{width: 200, margin: 50}}>
-        <Button size="normal">themebutton</Button>
+const ButtonModule = storiesOf('Button', module);
+ButtonModule.add('Default Button', () => (
+    <View style={{ width: 200, margin: 50 }}>
+        <Button>themebutton</Button>
+    </View>
+));
+
+ButtonModule.add('Disabled Button', () => (
+    <View style={{ width: 200, margin: 50 }}>
+        <Button disabled>Disabled</Button>
     </View>
 ));

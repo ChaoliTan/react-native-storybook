@@ -31,7 +31,6 @@ export default (theme: Theme) =>
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: theme.radius_md,
-            borderColor: theme.primary,
             borderWidth: 1,
         },
         // size
@@ -41,10 +40,16 @@ export default (theme: Theme) =>
         normal_rawText: {},
 
         // default style
-        default_raw: {},
-        default_disabled_raw: {},
+        default_raw: {
+            borderColor: theme.primary,
+        },
+        default_disabled_raw: {
+            borderColor: theme.gray,
+        },
         default_rawText: {
             color: theme.secondary,
         },
-        default_disabled_rawText: {},
+        default_disabled_rawText: {
+            color: theme.gray,
+        },
     });
