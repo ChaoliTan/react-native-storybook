@@ -1,30 +1,53 @@
 import React from 'react';
-import { StyleSheet, View, Text, Pressable } from 'react-native';
-import { useTheme } from '../../providers/themes';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { useTheme } from '@/hooks';
+import buttonStyle, { ButtonSize, ButtonStyles, ButtonType } from './style';
 
-const ThemedButton = (props) => {
-    const getThemeFromProps = useTheme(props);
-    const { title, ...theme } = getThemeFromProps;
-    // console.log(theme, 'props', props);
+type ButtonProps = {
+    size?: ButtonSize;
+    type?: ButtonType;
+    style?: ButtonStyles;
+    loading?: boolean;
+    disabled?: boolean;
+    children: React.ReactText | React.ReactNode;
+    onPress?: (e?: any) => void;
+};
+
+const ThemedButton: React.FC<ButtonProps> = (props) => {
+    const { children, size = 'normal', type = 'default', style, loading, disabled, onPress, ...restProps } = props;
+    const [isPressIn, setIsPresseIn] = React.useState(false);
+    const _styles = useTheme<ButtonStyles>({ themeStyle: buttonStyle, style });
+
+    const wrapperStyle = React.useMemo(
+        () => [
+            _styles.wrapper,
+            _styles[`${size}_raw`],
+            _styles[`${type}_raw`],
+            disabled && _styles[`${type}_disabled_raw`],
+            style,
+        ],
+        [_styles],
+    );
+    const textStyle = React.useMemo(
+        () => [_styles[`${size}_rawText`], _styles[`${type}_rawText`], disabled && _styles[`${type}_disabled_rawText`]],
+        [_styles, disabled],
+    );
 
     return (
-        <Pressable
-            style={{
-                ...defaultPressableStyle,
-                ...theme,
-            }}
+        <TouchableOpacity
+            activeOpacity={0.85}
+            style={wrapperStyle}
+            disabled={disabled}
+            onPressIn={() => setIsPresseIn(true)}
+            onPress={(e) => onPress?.(e)}
+            onPressOut={() => setIsPresseIn(false)}
+            {...restProps}
         >
-            <View>
-                <Text
-                    style={{
-                        ...defaultTextStyle,
-                        ...theme,
-                    }}
-                >
-                    {getThemeFromProps?.title}
-                </Text>
+            <View style={_styles.container}>
+                {/* TODO: add loading Indicator  */}
+                {loading ? <Text style={textStyle}>loading...</Text> : <Text style={textStyle}>{children}</Text>}
             </View>
-        </Pressable>
+        </TouchableOpacity>
     );
 };
 

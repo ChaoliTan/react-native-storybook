@@ -1,8 +1,8 @@
 import React from 'react';
 import deepmerge from 'deepmerge';
-import shallowequal from 'shallowequal';
 import defaultTheme from './themes/default';
 
+export { defaultTheme };
 export const ThemeContext = React.createContext(defaultTheme);
 export type Theme = typeof defaultTheme & { [key: string]: any };
 export type PartialTheme = Partial<Theme>;
@@ -15,14 +15,6 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     const theme = React.useMemo(() => ({ ...defaultTheme, ...value }), [value]);
     return <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>;
 };
-export interface UseThemeContextProps {
-    theme?: PartialTheme;
-}
-export const useTheme = (props: UseThemeContextProps = {}) => {
-    const theme = React.useContext(ThemeContext);
-    return { ...theme, ...props.theme };
-};
-
 export interface WithThemeProps<T, S> {
     themeStyles?: (theme: Theme) => T;
     styles?: S;
@@ -50,8 +42,7 @@ export function WithTheme<T, S>(props: WithThemeProps<T, S>) {
                 cache.current = themeStyles(theme);
             }
 
-            // TODO: check these styles has changed
-            if (styles && !shallowequal(stylesRef.current, styles)) {
+            if (styles && JSON.stringify(stylesRef.current) !== JSON.stringify(styles)) {
                 stylesRef.current = styles;
                 // merge styles from user defined
                 cache.current = deepmerge<T>(cache.current, styles);

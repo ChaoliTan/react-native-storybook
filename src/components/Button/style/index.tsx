@@ -1,29 +1,50 @@
-import React from 'react';
-import defaultTheme from '../../../providers/themes/default';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
+import { Theme } from '@/style';
 
-type ButtonSize = 'Big' | 'Normal' | 'Small';
-export interface ButtonStyle {
-    size?: ButtonSize;
-    style?: React.CSSProperties;
+export type ButtonSize = 'large' | 'normal' | 'small';
+export type ButtonType = 'default' | 'primary' | 'plain';
+/**
+ * container: 容器
+ * wrapper: children的容器
+ * raw: 负责跟按钮 size/type 相关的盒模型样式
+ * rawText: 负责跟按钮 size/type 相关的文字样式
+ */
+export interface ButtonStyles {
+    container: ViewStyle;
+    wrapper: ViewStyle;
+    // size
+    normal_raw: TextStyle;
+    normal_rawText: TextStyle;
+
+    // default style
+    default_raw: ViewStyle;
+    default_disabled_raw: ViewStyle;
+    default_rawText: TextStyle;
+    default_disabled_rawText: TextStyle;
 }
+export default (theme: Theme) =>
+    StyleSheet.create<ButtonStyles>({
+        container: {
+            flexDirection: 'row',
+        },
+        wrapper: {
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: theme.radius_md,
+            borderColor: theme.primary,
+            borderWidth: 1,
+        },
+        // size
+        normal_raw: {
+            paddingVertical: theme.h_spacing_md,
+        },
+        normal_rawText: {},
 
-export const defaultPressableStyle = {
-    backgroundColor: defaultTheme.brand_primary,
-    width: defaultTheme.button_width_sm,
-    height: defaultTheme.button_height_sm,
-    display: defaultTheme.flex,
-    flexDirection: defaultTheme.row,
-    justifyContent: defaultTheme.center,
-    alignItems: defaultTheme.center,
-    borderRadius: defaultTheme.border_radius,
-    borderTopLeftRadius: defaultTheme.border_top_left_radius,
-    borderTopRightRadius: defaultTheme.border_top_right_radius,
-    borderBottomLeftRadius: defaultTheme.border_bottom_Left_radius,
-    borderBottomRightRadius: defaultTheme.border_bottom_right_radius,
-};
-
-export const defaultTextStyle = {
-    fontSize: defaultTheme.font_size_caption_sm,
-    lineHeight: defaultTheme.button_line_height_sm,
-    color: defaultTheme.color_text_base_inverse,
-};
+        // default style
+        default_raw: {},
+        default_disabled_raw: {},
+        default_rawText: {
+            color: theme.secondary,
+        },
+        default_disabled_rawText: {},
+    });
