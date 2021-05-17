@@ -31,6 +31,7 @@ const ThemedButton: React.FC<ButtonProps> = (props) => {
         () => [_styles[`${size}_rawText`], _styles[`${type}_rawText`], disabled && _styles[`${type}_disabled_rawText`]],
         [_styles, disabled],
     );
+    console.log(disabled, 'disabled');
 
     return (
         <TouchableOpacity
