@@ -4,43 +4,60 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import Button from '.';
 
-export default {
-    title: '01 - Button',
-    decorators: [withKnobs],
-    component: Button,
-};
+const ButtonModule = storiesOf('Button', module);
+ButtonModule.add('Default Button', () => (
+    <View style={{ width: 200, margin: 50 }}>
+        <Button>themebutton</Button>
+    </View>
+));
 
-const toggleGroupId = 'Toggles';
-const valueGroupId = 'Values';
+ButtonModule.add('Disabled Button', () => (
+    <View style={{ width: 200, margin: 50 }}>
+        <Button disabled>Disabled</Button>
+    </View>
+));
 
-const defaultButtonProps = () => ({
-    children: text('title', 'default button', valueGroupId),
-    disabled: boolean('disabled', false, toggleGroupId),
-    title: 'default button',
-    onPress: () => {},
-});
+/**
+ * The following is stories with knobs, but it seems only working on web stroybook instead React Native simulator.
+ *
+ */
+// export default {
+//     title: '01 - Button',
+//     decorators: [withKnobs],
+//     component: Button,
+// };
 
-const disabledButtonProps = () => ({
-    children: text('title', 'disabled button', valueGroupId),
-    disabled: boolean('disabled', true, toggleGroupId),
-    title: 'disabled button',
-    onPress: () => {},
-});
+// const toggleGroupId = 'Toggles';
+// const valueGroupId = 'Values';
 
-export const defaultButton = () => {
-    const { children } = defaultButtonProps();
-    return (
-        <View style={{ width: 200, margin: 50 }}>
-            <Button {...defaultButtonProps()}>{children}</Button>
-        </View>
-    );
-};
+// const defaultButtonProps = () => ({
+//     children: text('title', 'default button', valueGroupId),
+//     disabled: boolean('disabled', false, toggleGroupId),
+//     title: 'default button',
+//     onPress: () => {},
+// });
 
-export const disabledButton = () => {
-    const { children } = disabledButtonProps();
-    return (
-        <View style={{ width: 200, margin: 50 }}>
-            <Button {...disabledButtonProps()}>{children}</Button>
-        </View>
-    );
-};
+// const disabledButtonProps = () => ({
+//     children: text('title', 'disabled button', valueGroupId),
+//     disabled: boolean('disabled', true, toggleGroupId),
+//     title: 'disabled button',
+//     onPress: () => {},
+// });
+
+// export const defaultButton = () => {
+//     const { children } = defaultButtonProps();
+//     return (
+//         <View style={{ width: 200, margin: 50 }}>
+//             <Button {...defaultButtonProps()}>{children}</Button>
+//         </View>
+//     );
+// };
+
+// export const disabledButton = () => {
+//     const { children } = disabledButtonProps();
+//     return (
+//         <View style={{ width: 200, margin: 50 }}>
+//             <Button {...disabledButtonProps()}>{children}</Button>
+//         </View>
+//     );
+// };
