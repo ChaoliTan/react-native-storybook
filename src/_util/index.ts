@@ -1,12 +1,13 @@
-import {Dimensions, InteractionManager} from 'react-native';
+import { Dimensions, InteractionManager } from 'react-native';
 
 const Win = Dimensions.get('window');
 export const Size = {
     width: Win.width,
     height: Win.height,
 };
-export {default as getStatusBarHeight} from './getStatusBarHeight';
-export {getLocaleCode} from './getLocale';
+export { default as getStatusBarHeight } from './getStatusBarHeight';
+export { getLocaleCode } from './getLocale';
+export { default as isShallowEqual } from './shallowEqual';
 /**
  * @description 当reactNavigation转场动画完成, 执行回调
  * @param fn
