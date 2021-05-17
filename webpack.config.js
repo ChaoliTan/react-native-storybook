@@ -24,6 +24,16 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.stories\.tsx?$/,
+                loaders: [
+                    {
+                        loader: require.resolve('@storybook/source-loader'),
+                        options: { parser: 'typescript' },
+                    },
+                ],
+                enforce: 'pre',
+            },
+            {
                 test: /\.(js|jsx|ts|tsx)?$/,
                 exclude: /node_modules\/(?!()\/).*/,
                 use: {
